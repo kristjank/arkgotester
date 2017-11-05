@@ -1,8 +1,8 @@
-## ARKGO Load Testing script
+## ARKGO Load Testing application
 This is a work in progress....
 
 ArkGo Tester is a configurable executable script to test ARK BC performance and stability. 
-Script is adjustable for payload size, iterations, multibroadcast, single node testing, etc... So you can simulate various situations...
+Script is adjustable for payload size, iterations, multibroadcast, single node testing, etc... So you can simulate various situations on DEVNET environment.
 
 ## Set your configuration
 Edit cfg/config.toml and start running tests.
