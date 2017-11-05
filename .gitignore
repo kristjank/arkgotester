@@ -15,5 +15,6 @@
 
 cfg/config.toml
 debug
-arkgotest.exe
-arkgotest
+arkgotester.exe
+arkgotester
+
