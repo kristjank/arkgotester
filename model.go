@@ -14,7 +14,9 @@ type TestLogRecord struct {
 	TestStarted        time.Time
 	TestStopped        time.Time
 	TestStatus         string
-	TestLogIterationID int       `storm:"index"`
+	TestLogIterationID int `storm:"index"`
+	SinglePeerTest     bool
+	SinglePeerIP       string
 	CreatedAt          time.Time `storm:"index"`
 	ArkGoTesterVersion string
 }

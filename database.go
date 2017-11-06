@@ -19,6 +19,8 @@ func createTestRecord() *TestLogRecord {
 		TxIterations:       viper.GetInt("env.txIterations"),
 		TxMultiBroadCast:   viper.GetInt("env.txMultiBroadCast"),
 		TxDescription:      viper.GetString("env.txDescription"),
+		SinglePeerIP:       viper.GetString("env.singlePeerIp"),
+		SinglePeerTest:     viper.GetBool("env.singlePeerTest"),
 		CreatedAt:          time.Now(),
 		ArkGoTesterVersion: ArkGoTesterVersion,
 	}

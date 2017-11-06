@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/kristjank/ark-go/core"
@@ -15,6 +16,11 @@ func runTests() {
 	testRecord.TestStarted = time.Now()
 	for xx := 0; xx < viper.GetInt("env.txIterations"); xx++ {
 		ArkAPIClient = ArkAPIClient.SetActiveConfiguration(core.DEVNET)
+		if viper.GetBool("env.singlePeerTest") {
+			log.Info("Single peer mode test active. Peer: ", viper.GetString("env.singlePeerIp"))
+			fmt.Println("Single peer mode test active. Peer: ", viper.GetString("env.singlePeerIp"))
+			ArkAPIClient = core.NewArkClientFromIP(viper.GetString("env.singlePeerIp"))
+		}
 		payload := core.TransactionPayload{}
 
 		for i := 0; i < viper.GetInt("env.txPerPayload"); i++ {
