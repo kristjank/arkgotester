@@ -139,6 +139,11 @@ func main() {
 			color.Set(color.FgMagenta)
 			runTests()
 			color.Unset()
+		case 2:
+			clearScreen()
+			color.Set(color.FgMagenta)
+			runTestsParallel()
+			color.Unset()			
 		case 8:
 			clearScreen()
 			color.Set(color.FgHiWhite)
