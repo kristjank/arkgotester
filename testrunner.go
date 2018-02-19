@@ -15,7 +15,6 @@ func runTests() {
 
 	testRecord.TestStarted = time.Now()
 	for xx := 0; xx < viper.GetInt("env.txIterations"); xx++ {
-		ArkAPIClient = ArkAPIClient.SetActiveConfiguration(core.DEVNET)
 		if viper.GetBool("env.singlePeerTest") {
 			log.Info("Single peer mode test active. Peer: ", viper.GetString("env.singlePeerIp"))
 			fmt.Println("Single peer mode test active. Peer: ", viper.GetInt("env.singlePeerPort"))
@@ -25,6 +24,8 @@ func runTests() {
 			peer.Port = viper.GetInt("env.singlePeerPort")
 			ArkAPIClient = core.NewArkClientFromPeer(peer)
 			//ArkAPIClient = core.NewArkClientFromIP(viper.GetString("env.singlePeerIp"))
+		} else {
+			ArkAPIClient = ArkAPIClient.SetActiveConfiguration(core.DEVNET)
 		}
 
 		payload := core.TransactionPayload{}
