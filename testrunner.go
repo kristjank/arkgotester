@@ -37,7 +37,7 @@ func runTests() {
 			payload.Transactions = append(payload.Transactions, tx)
 		}
 
-		log.Info("Sending transactions to ", ArkAPIClient.GetActivePeer(), "nr of tx: ", len(payload.Transactions))
+		log.Info("Sending transactions, nr of tx: ", len(payload.Transactions))
 
 		testIterRecord := createTestIterationRecord(testRecord.ID)
 		testIterRecord.Save()
