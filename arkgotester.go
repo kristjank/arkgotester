@@ -47,7 +47,7 @@ func openDB() {
 		log.Fatal(err.Error())
 	}
 
-	log.Println("DB Opened at:", ArkTestDB.Path)
+	log.Println("DB Opened")
 }
 
 func initLogger() {
@@ -143,7 +143,7 @@ func main() {
 			clearScreen()
 			color.Set(color.FgMagenta)
 			runTestsParallel()
-			color.Unset()			
+			color.Unset()
 		case 8:
 			clearScreen()
 			color.Set(color.FgHiWhite)
