@@ -33,7 +33,7 @@ func init() {
 	initLogger()
 	loadConfig()
 	ArkAPIClient = core.NewArkClient(nil)
-	ArkAPIClient = ArkAPIClient.SetActiveConfiguration(core.DEVNET)
+	ArkAPIClient = ArkAPIClient.SetActiveConfiguration(core.MAINNET)
 
 	if viper.GetBool("env.singlePeerTest") {
 		log.Info("Single peer mode test active. Peer: ", viper.GetString("env.singlePeerIp"))
