@@ -9,6 +9,14 @@ import (
 	"github.com/spf13/viper"
 )
 
+func getRandomRecepient() string {
+	return viper.GetString("account.recepient1")
+}
+
+func getRandomSender() (string, string) {
+	return viper.GetString("account.passphrase1"), viper.GetString("account.secondPassphrase1")
+}
+
 func runTests() {
 	testRecord := createTestRecord()
 	testRecord.Save()
@@ -29,12 +37,13 @@ func runTests() {
 		}
 
 		payload := core.TransactionPayload{}
-
+		senderP1, senderP2 := getRandomSender()
+		recepient := getRandomRecepient()
 		for i := 0; i < viper.GetInt("env.txPerPayload"); i++ {
-			tx := core.CreateTransaction(viper.GetString("account.recepient"),
+			tx := core.CreateTransaction(recepient,
 				int64(i+1),
 				viper.GetString("env.txDescription"),
-				viper.GetString("account.passphrase"), viper.GetString("account.secondPassphrase"))
+				senderP1, senderP2)
 			payload.Transactions = append(payload.Transactions, tx)
 		}
 
