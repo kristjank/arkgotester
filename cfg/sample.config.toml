@@ -1,5 +1,5 @@
 [env]
-txPerPayload=1000	                               #nr of transactions per payloas
+txPerPayload=24	                               #nr of transactions per payloas
 txIterations=1                                 #nr of iterations of payload deliveries... all txIterations * txPerPayload = all tx being sent
 txMultiBroadCast = 1                           #nr of peers to multibroadcast to
 txDescription="ARK-GO Testing program running" #txDescription
