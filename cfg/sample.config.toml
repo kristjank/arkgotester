@@ -1,5 +1,5 @@
 [env]
-txPerPayload=5	                               #nr of transactions per payloas
+txPerPayload=1000	                               #nr of transactions per payloas
 txIterations=1                                 #nr of iterations of payload deliveries... all txIterations * txPerPayload = all tx being sent
 txMultiBroadCast = 1                           #nr of peers to multibroadcast to
 txDescription="ARK-GO Testing program running" #txDescription
@@ -9,6 +9,19 @@ singlePeerIp = "127.0.0.1"
 singlePeerPort = 4000
 
 [account]
-passphrase="clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire"                                  #passphrase of the test tx sending account
-secondPassphrase =""
-recepient="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions
+passphrase1="clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire"                                  #passphrase of the test tx sending account
+secondPassphrase1 =""
+passphrase2="clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire"                                  #passphrase of the test tx sending account
+secondPassphrase2 =""
+passphrase3="clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire"                                  #passphrase of the test tx sending account
+secondPassphrase3 =""
+passphrase4="clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire"                                  #passphrase of the test tx sending account
+secondPassphrase4 =""
+passphrase5="clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire"                                  #passphrase of the test tx sending account
+secondPassphrase5 =""
+
+recepient1="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions
+recepient2="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions
+recepient3="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions
+recepient4="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions
+recepient5="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions
