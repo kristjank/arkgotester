@@ -34,6 +34,8 @@ package main
 import (
 	"math/rand"
 	"time"
+
+	"github.com/kristjank/ark-go/arkcoin"
 )
 
 func random(min, max int) int {
@@ -47,6 +49,10 @@ func getRandomPassword() string {
 		password += " " + dictionary[random(0, len(dictionary))]
 	}
 	return password
+}
+
+func getWallet(pass string) (string, string) {
+	return arkcoin.NewPrivateKeyFromPassword(pass, arkcoin.ActiveCoinConfig).PublicKey.Address(), pass
 }
 
 var dictionary = [...]string{

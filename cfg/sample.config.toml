@@ -2,6 +2,8 @@
 txPerPayload=2000                              #nr of transactions per payloas
 txIterations=1                                 #nr of iterations of payload deliveries... all txIterations * txPerPayload = all tx being sent
 txMultiBroadCast = 1                           #nr of peers to multibroadcast to
+txCreateDelegates = true
+txNrOfDelegates = 5
 txDescription="ARK-GO Testing program running" #txDescription
 dbFileName = "db/testlog.db"
 singlePeerTest = true
@@ -20,8 +22,3 @@ secondPassphrase4 =""
 passphrase5="clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire"                                  #passphrase of the test tx sending account
 secondPassphrase5 =""
 
-recepient1="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions
-recepient2="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions
-recepient3="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions
-recepient4="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions
-recepient5="AZFEPTWnn2Sn8wDZgCRF8ohwKkrmk2AZi1"                                   #recepient of the transactions

@@ -9,10 +9,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-func getRandomRecepient() string {
-	return viper.GetString("account.recepient1")
-}
-
 func getRandomSender() (string, string) {
 	return viper.GetString("account.passphrase1"), viper.GetString("account.secondPassphrase1")
 }
@@ -37,10 +33,12 @@ func runTests() {
 		}
 
 		payload := core.TransactionPayload{}
+		delegateCount := 0
 		senderP1, senderP2 := getRandomSender()
-		recepient := getRandomRecepient()
+		recepientAddress, recepientPassword := getWallet(getRandomPassword())
+		log.Debug("Creating random recepient", recepientAddress, recepientPassword)
 		for i := 0; i < viper.GetInt("env.txPerPayload"); i++ {
-			tx := core.CreateTransaction(recepient,
+			tx := core.CreateTransaction(recepientAddress,
 				int64(i+1),
 				viper.GetString("env.txDescription"),
 				senderP1, senderP2)
@@ -70,6 +68,10 @@ func runTests() {
 	testRecord.TestStopped = time.Now()
 	testRecord.Update()
 	log.Info("The call took %v to run.\n", testRecord.TestStopped.Sub(testRecord.TestStarted))
+
+}
+
+func createDelegates() {
 
 }
 
