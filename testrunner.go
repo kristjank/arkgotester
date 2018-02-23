@@ -33,7 +33,6 @@ func runTests() {
 		}
 
 		payload := core.TransactionPayload{}
-		delegateCount := 0
 		senderP1, senderP2 := getRandomSender()
 		recepientAddress, recepientPassword := getWallet(getRandomPassword())
 		log.Debug("Creating random recepient", recepientAddress, recepientPassword)
