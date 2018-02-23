@@ -47,7 +47,6 @@ func getRandomPassword() string {
 		password += " " + dictionary[random(0, len(dictionary))]
 	}
 	return password
-
 }
 
 var dictionary = [...]string{

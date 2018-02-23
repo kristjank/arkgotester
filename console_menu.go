@@ -10,6 +10,7 @@ import (
 	"github.com/fatih/color"
 	"github.com/kristjank/ark-go/core"
 	log "github.com/sirupsen/logrus"
+	"github.com/spf13/viper"
 )
 
 //////////////////////////////////////////////////////////////////////////////
@@ -63,7 +64,7 @@ func printMenu() {
 	printNetworkInfo()
 	color.Set(color.FgHiYellow)
 	fmt.Println("")
-	fmt.Println("\t1-Deliver payload")
+	fmt.Println("\t1-Deliver payload [", viper.GetInt("env.txPerPayload"), "/", viper.GetInt("env.txIterations"), "]")
 	fmt.Println("\t2-Deliver payload in parallel")
 	fmt.Println("\t8-Check delivery confirmations (latest run)")
 	fmt.Println("\t9-List DB tests")
