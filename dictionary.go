@@ -33,20 +33,14 @@ package main
 
 import (
 	"math/rand"
-	"time"
 
 	"github.com/kristjank/ark-go/arkcoin"
 )
 
-func random(min, max int) int {
-	rand.Seed(time.Now().Unix())
-	return rand.Intn(max-min) + min
-}
-
 func getRandomPassword() string {
 	password := ""
 	for i := 0; i < 12; i++ {
-		password += " " + dictionary[random(0, len(dictionary))]
+		password += " " + dictionary[rand.Intn(len(dictionary))]
 	}
 	return password
 }

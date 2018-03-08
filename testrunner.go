@@ -34,9 +34,9 @@ func runTests() {
 
 		payload := core.TransactionPayload{}
 		senderP1, senderP2 := getRandomSender()
-		recepientAddress, recepientPassword := getWallet(getRandomPassword())
-		log.Info("Creating random recepient", recepientAddress, recepientPassword)
 		for i := 0; i < viper.GetInt("env.txPerPayload"); i++ {
+			recepientAddress, recepientPassword := getWallet(getRandomPassword())
+			log.Info("Creating random recepient", recepientAddress, recepientPassword)
 			tx := core.CreateTransaction(recepientAddress,
 				int64(i+1),
 				viper.GetString("env.txDescription"),
