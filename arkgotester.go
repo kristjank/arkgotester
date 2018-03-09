@@ -133,7 +133,7 @@ func main() {
 	if *modeSilentPtr {
 		log.Info("Silent Mode active")
 		log.Info("Starting to send Test trx")
-		runTests()
+		fillTransactions()
 		log.Info("Exiting silent mode")
 		os.Exit(1985)
 	}
@@ -151,12 +151,12 @@ func main() {
 		case 1:
 			clearScreen()
 			color.Set(color.FgMagenta)
-			runTests()
+			fillTransactions()
 			color.Unset()
 		case 2:
 			clearScreen()
 			color.Set(color.FgMagenta)
-			runTestsParallel()
+			// runTestsParallel()
 			color.Unset()
 		case 8:
 			clearScreen()
