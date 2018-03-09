@@ -11,7 +11,7 @@ singlePeerIp = "127.0.0.1"
 singlePeerPort = 4000
 
 [account]
-passphrase1="clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire"                                  #passphrase of the test tx sending account
+passphrase1="measure blue volcano month orphan only cupboard found laugh peasant drama monitor"                                  #passphrase of the test tx sending account
 secondPassphrase1 =""
 passphrase2="clay harbor enemy utility margin pretty hub comic piece aerobic umbrella acquire"                                  #passphrase of the test tx sending account
 secondPassphrase2 =""

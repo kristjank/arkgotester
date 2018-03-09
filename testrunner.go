@@ -5,6 +5,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/kristjank/ark-go/arkcoin"
 	"github.com/kristjank/ark-go/core"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -40,12 +41,13 @@ func fillTransactions() {
 		senderP1, senderP2 := getRandomSender()
 		for i := 0; i < viper.GetInt("env.txPerPayload"); i++ {
 			recepientAddress, recepientPassword := getWallet(getRandomPassword())
+			f.WriteString(arkcoin.NewPrivateKeyFromPassword(senderP1, arkcoin.ActiveCoinConfig).PublicKey.Address() + "-" + recepientAddress + "-" + recepientPassword + "\n")
 			log.Info("Creating random recepient ", recepientAddress, recepientPassword)
 			tx := core.CreateTransaction(recepientAddress,
 				int64(i+1),
 				viper.GetString("env.txDescription"),
 				senderP1, senderP2)
-			f.WriteString(recepientPassword + "\n")
+			//f.WriteString(recepientPassword + "\n")
 			payload.Transactions = append(payload.Transactions, tx)
 		}
 
