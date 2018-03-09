@@ -92,7 +92,7 @@ func runTestsParallel() {
 
 			for i := 0; i < viper.GetInt("env.txPerPayload"); i++ {
 				tx := core.CreateTransaction(viper.GetString("account.recepient"),
-					int64(i+1),
+					3000000000,
 					viper.GetString("env.txDescription"),
 					viper.GetString("account.passphrase"), viper.GetString("account.secondPassphrase"))
 				payload.Transactions = append(payload.Transactions, tx)
