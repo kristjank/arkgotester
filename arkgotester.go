@@ -156,7 +156,6 @@ func main() {
 		case 2:
 			clearScreen()
 			color.Set(color.FgMagenta)
-			// runTestsParallel()
 			color.Unset()
 		case 8:
 			clearScreen()

@@ -17,4 +17,5 @@ cfg/config.toml
 debug
 arkgotester.exe
 arkgotester
+passphrases.log
 
