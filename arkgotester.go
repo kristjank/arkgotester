@@ -16,6 +16,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+//version
 var ArkGoTesterVersion string
 
 //ArkAPIClient - ARKAPI Client
