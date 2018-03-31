@@ -27,8 +27,6 @@ func fillTransactions() {
 		peer.IP = viper.GetString("env.singlePeerIp")
 		peer.Port = viper.GetInt("env.singlePeerPort")
 		ArkAPIClient = core.NewArkClientFromPeer(peer)
-	} else {
-		ArkAPIClient = ArkAPIClient.SetActiveConfiguration(core.DEVNET)
 	}
 
 	testRecord := createTestRecord()

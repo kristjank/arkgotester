@@ -16,7 +16,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-//version
+//ArkGoTesterVersion version string
 var ArkGoTesterVersion string
 
 //ArkAPIClient - ARKAPI Client
@@ -33,22 +33,7 @@ var wg sync.WaitGroup
 func init() {
 	initLogger()
 	loadConfig()
-	ArkAPIClient = core.NewArkClient(nil)
-	ArkAPIClient = ArkAPIClient.SetActiveConfiguration(core.MAINNET)
-
-	if viper.GetBool("env.singlePeerTest") {
-		log.Info("Single peer mode test active. Peer: ", viper.GetString("env.singlePeerIp"))
-		fmt.Println("Single peer mode test active. Peer: ", viper.GetInt("env.singlePeerPort"))
-
-		peer := core.Peer{}
-		peer.IP = viper.GetString("env.singlePeerIp")
-		peer.Port = viper.GetInt("env.singlePeerPort")
-		ArkAPIClient = core.NewArkClientFromPeer(peer)
-		//ArkAPIClient = core.NewArkClientFromIP(viper.GetString("env.singlePeerIp"))
-	} else {
-		ArkAPIClient = ArkAPIClient.SetActiveConfiguration(core.DEVNET)
-	}
-
+	ArkAPIClient = ArkAPIClient.SetActiveConfigurationFromIP(viper.GetString("env.autoconfigPeer"))
 	openDB()
 	dumpConfig()
 }
@@ -113,7 +98,7 @@ func dumpConfig() {
 }
 
 func main() {
-	ArkGoTesterVersion = "v0.1.0"
+	ArkGoTesterVersion = "v0.5.0"
 
 	log.Info("=============================================================================")
 	log.Info("ARKGO Tester application starting")

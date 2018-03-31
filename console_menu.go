@@ -36,19 +36,10 @@ func clearScreen() {
 
 func printNetworkInfo() {
 	color.Set(color.FgHiCyan)
-	if core.EnvironmentParams.Network.Type == core.MAINNET {
-		log.Info("Connected to ARK MAINNET on peer:", core.BaseURL, "| ARKGoTester version", ArkGoTesterVersion)
-	}
 
-	if core.EnvironmentParams.Network.Type == core.DEVNET {
-		fmt.Println("Connected to ARK DEVNET on peer:", core.BaseURL, "| ARKGoTester version", ArkGoTesterVersion)
-		log.Info("Connected to ARK DEVNET on peer:", core.BaseURL, "| ARKGoTester version", ArkGoTesterVersion)
-	}
+	fmt.Println("Connected on ", core.EnvironmentParams.Network.Token, " peer:", core.BaseURL, "| ARKGoTester version", ArkGoTesterVersion)
+	log.Info("Connected on ", core.EnvironmentParams.Network.Token, " peer:", core.BaseURL, "| ARKGoTester version", ArkGoTesterVersion)
 
-	if core.EnvironmentParams.Network.Type == core.KAPU {
-		fmt.Println("Connected to KAPU MAINNET on peer:", core.BaseURL, "| ARKGoTester version", ArkGoTesterVersion)
-		log.Info("Connected to KAPU MAINNET on peer:", core.BaseURL, "| ARKGoTester version", ArkGoTesterVersion)
-	}
 }
 
 func printBanner() {
