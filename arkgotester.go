@@ -33,7 +33,7 @@ var wg sync.WaitGroup
 func init() {
 	initLogger()
 	loadConfig()
-	ArkAPIClient = ArkAPIClient.SetActiveConfigurationFromIP(viper.GetString("env.autoconfigPeer"))
+	ArkAPIClient = ArkAPIClient.SetActiveConfigurationFromPeerAddress(viper.GetString("env.autoconfigPeer"))
 	openDB()
 	dumpConfig()
 }
