@@ -4,11 +4,11 @@ txIterations=1                                 #nr of iterations of payload deli
 txMultiBroadCast = 1                           #nr of peers to multibroadcast to
 txCreateDelegates = true
 txNrOfDelegates = 5
-txDescription="ARK-GO Testing program running" #txDescription
+txDescription="arkgo tester..." #txDescription
 dbFileName = "db/testlog.db"
 singlePeerTest = true                     #if active payload will be delivered to address and port specified below
-singlePeerIp = "137.74.79.171"            #deliver payload to this address
-singlePeerPort = 4000                     #deliver payload to this address
+singlePeerIp = "127.0.0.1"            #deliver payload to this address
+singlePeerPort = 4003                     #deliver payload to this address
 autoconfigPeer = "127.0.0.1:4003"      #network autoconfigure seed peer
 
 [account]
