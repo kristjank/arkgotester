@@ -56,7 +56,7 @@ func printMenu() {
 	color.Set(color.FgHiYellow)
 	fmt.Println("")
 	fmt.Println("\t1-Deliver payload [", viper.GetInt("env.txPerPayload"), "/", viper.GetInt("env.txIterations"), "]")
-	fmt.Println("\t2-Create delegates (first call option 1)")
+	fmt.Println("\t2-Deliver payload random fees [", viper.GetInt("env.dynamicFeeMin"), "--", viper.GetInt("env.dynamicFeeMax"), "]")
 	fmt.Println("\t8-Check delivery confirmations (latest run)")
 	fmt.Println("\t9-List DB tests")
 	fmt.Println("\t0-Exit")

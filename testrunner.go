@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"time"
 
@@ -11,11 +12,16 @@ import (
 	"github.com/spf13/viper"
 )
 
+func random(min, max int) int {
+	rand.Seed(time.Now().UTC().UnixNano())
+	return rand.Intn(max-min) + min
+}
+
 func getRandomSender() (string, string) {
 	return viper.GetString("account.passphrase1"), viper.GetString("account.secondPassphrase1")
 }
 
-func fillTransactions() {
+func fillTransactions(randomFees bool) {
 	f, _ := os.Create("passphrases.log")
 	defer f.Close()
 
@@ -34,17 +40,25 @@ func fillTransactions() {
 
 	testRecord.TestStarted = time.Now()
 	for xx := 0; xx < viper.GetInt("env.txIterations"); xx++ {
-
 		payload := core.TransactionPayload{}
 		senderP1, senderP2 := getRandomSender()
 		for i := 0; i < viper.GetInt("env.txPerPayload"); i++ {
+			fee := 0
+			if randomFees {
+				fee = random(viper.GetInt("env.dynamicFeeMin"), viper.GetInt("env.dynamicFeeMax"))
+			} else {
+				fee = 10000000
+			}
+
 			recepientAddress, recepientPassword := getWallet(getRandomPassword())
 			f.WriteString(arkcoin.NewPrivateKeyFromPassword(senderP1, arkcoin.ActiveCoinConfig).PublicKey.Address() + "-" + recepientAddress + "-" + recepientPassword + "\n")
 			log.Info("Creating random recepient ", recepientAddress, recepientPassword)
 			tx := core.CreateTransaction(recepientAddress,
 				int64(i+1),
 				viper.GetString("env.txDescription"),
-				senderP1, senderP2)
+				senderP1,
+				senderP2,
+				int64(fee))
 			//f.WriteString(recepientPassword + "\n")
 			payload.Transactions = append(payload.Transactions, tx)
 		}

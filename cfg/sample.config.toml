@@ -1,5 +1,5 @@
 [env]
-txPerPayload=300                              #nr of transactions per payloas
+txPerPayload=20                              #nr of transactions per payloas
 txIterations=1                                 #nr of iterations of payload deliveries... all txIterations * txPerPayload = all tx being sent
 txMultiBroadCast = 1                           #nr of peers to multibroadcast to
 txCreateDelegates = true
@@ -11,8 +11,10 @@ singlePeerTest = true                     #if active payload will be delivered t
 #singlePeerPort = 4000                     #deliver payload to this address
 #autoconfigPeer = "51.255.100.0:4102"      #network autoconfigure seed peer
 singlePeerIp = "127.0.0.1"            #deliver payload to this address
-singlePeerPort = 4000                     #deliver payload to this address
-autoconfigPeer = "127.0.0.1:4102"      #network autoconfigure seed peer
+singlePeerPort = 4002                     #deliver payload to this address
+autoconfigPeer = "127.0.0.1:4003"      #network autoconfigure seed peer
+dynamicFeeMin = 1000
+dynamicFeeMax = 400000
 
 [account]
 passphrase1="measure blue volcano month orphan only cupboard found laugh peasant drama monitor"                                  #passphrase of the test tx sending account
