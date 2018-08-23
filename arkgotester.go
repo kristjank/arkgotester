@@ -86,6 +86,7 @@ func loadConfig() {
 	viper.SetDefault("env.txDescription", "ARK Test tx script")
 	viper.SetDefault("env.singlePeerTest", false)
 	viper.SetDefault("env.singlePeerIp", "")
+	viper.SetDefault("env.logPasswords", false)
 }
 
 func dumpConfig() {

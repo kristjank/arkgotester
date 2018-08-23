@@ -52,7 +52,11 @@ func fillTransactions(randomFees bool) {
 
 			recepientAddress, recepientPassword := getWallet(getRandomPassword())
 			f.WriteString(arkcoin.NewPrivateKeyFromPassword(senderP1, arkcoin.ActiveCoinConfig).PublicKey.Address() + "-" + recepientAddress + "-" + recepientPassword + "\n")
-			log.Info("Creating random recepient ", recepientAddress, recepientPassword)
+
+			if viper.GetBool("env.logPasswords") {
+				log.Info("Creating random recepient ", recepientAddress, recepientPassword)
+			}
+
 			tx := core.CreateTransaction(recepientAddress,
 				int64(i+1),
 				viper.GetString("env.txDescription"),
@@ -71,7 +75,7 @@ func fillTransactions(randomFees bool) {
 		testIterRecord.IterationStopped = time.Now()
 
 		if res.Success {
-			log.Info("Success,", httpresponse.Status, xx)
+			log.Info("Success,", httpresponse.Status, xx, res.TransactionIDs)
 			testIterRecord.TestStatus = "SUCCESS"
 			testIterRecord.TxIDs = res.TransactionIDs
 		} else {
