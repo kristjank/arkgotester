@@ -145,6 +145,11 @@ func main() {
 			color.Set(color.FgMagenta)
 			fillTransactions(true)
 			color.Unset()
+		case 3:
+			clearScreen()
+			color.Set(color.FgMagenta)
+			sendVotes()
+			color.Unset()
 		case 8:
 			clearScreen()
 			color.Set(color.FgHiWhite)

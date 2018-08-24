@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"net/http"
 	"os"
 	"time"
 
@@ -74,17 +75,7 @@ func fillTransactions(randomFees bool) {
 		res, httpresponse, err := ArkAPIClient.PostTransaction(payload)
 		testIterRecord.IterationStopped = time.Now()
 
-		if res.Success {
-			log.Info("Success,", httpresponse.Status, xx, res.TransactionIDs)
-			testIterRecord.TestStatus = "SUCCESS"
-			testIterRecord.TxIDs = res.TransactionIDs
-		} else {
-			testIterRecord.TestStatus = "FAILED"
-			if httpresponse != nil {
-				log.Error(res.Message, res.Error, xx)
-			}
-			log.Error(err.Error(), res.Error)
-		}
+		logStatus(res, httpresponse, err)
 		testIterRecord.Update()
 	}
 	testRecord.TestStopped = time.Now()
@@ -93,4 +84,34 @@ func fillTransactions(randomFees bool) {
 }
 
 func createDelegates() {
+}
+
+func sendVotes() {
+	if viper.GetBool("env.singlePeerTest") {
+		log.Info("Single peer mode test active. Peer: ", viper.GetString("env.singlePeerIp"))
+		fmt.Println("Single peer mode test active. Peer: ", viper.GetInt("env.singlePeerPort"))
+
+		peer := core.Peer{}
+		peer.IP = viper.GetString("env.singlePeerIp")
+		peer.Port = viper.GetInt("env.singlePeerPort")
+		ArkAPIClient = core.NewArkClientFromPeer(peer)
+	}
+
+	payload := core.TransactionPayload{}
+	senderP1, senderP2 := getRandomSender()
+
+	tx := core.CreateVote("+", "['delegate']", senderP1, senderP2)
+	payload.Transactions = append(payload.Transactions, tx)
+
+	res, httpresponse, err := ArkAPIClient.PostTransaction(payload)
+	logStatus(res, httpresponse, err)
+
+}
+
+func logStatus(res core.PostTransactionResponse, httpresponse *http.Response, err error) {
+	if res.Success {
+		log.Info("Success,", httpresponse.Status)
+	} else {
+		log.Error(err.Error(), res.Error, res.Message)
+	}
 }
