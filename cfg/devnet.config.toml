@@ -1,0 +1,20 @@
+[env]
+txPerPayload=1500                              #nr of transactions per payloas
+txIterations=1                                 #nr of iterations of payload deliveries... all txIterations * txPerPayload = all tx being sent
+txMultiBroadCast = 1                           #nr of peers to multibroadcast to
+txCreateDelegates = true
+txNrOfDelegates = 5
+txDescription="Talk is cheap, show me the code :)" #txDescription
+dbFileName = "db/testlog1.db"
+singlePeerTest = true                     #if active payload will be delivered to address and port specified below
+singlePeerIp = "185.170.115.40"            #deliver payload to this address
+singlePeerPort = 4002                     #deliver payload to this address
+autoconfigPeer = "185.170.115.40:4003"      #network autoconfigure seed peer
+dynamicFeeMin = 80
+dynamicFeeMax = 1000000
+logPasswords = false
+
+[account]
+#passphrase1="resemble abandon same total oppose noise dune order fatal rhythm pink science"
+passphrase1=""
+passphrase2=""
